@@ -5,13 +5,16 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'https://notes-serverless-app.com',
     env: {
-      viewportWidthBreakpoint: 768,},
+      viewportWidthBreakpoint: 768,
+    },
     defaultCommandTimeout: 60000, // tempo máximo para cy.get, cy.contains, etc (10s)
     requestTimeout: 60000,        // tempo máximo para esperar requisições iniciarem (20s)
     responseTimeout: 60000,       // tempo máximo para esperar respostas de requisições (20s)
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      require('@cypress/grep/src/plugin')(config)
+      return config
     },
+
   },
-  projectId : '1153sq',
+  projectId: '1153sq',
 })
